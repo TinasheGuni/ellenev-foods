@@ -2,7 +2,7 @@
 import random
 import sys
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QPushButton, QWidget,
-                             QLabel)
+                             QLabel, QRadioButton)
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon
 
@@ -12,13 +12,20 @@ class MainWindow(QMainWindow):
         self.initializeUI()
 
     def initializeUI(self):
-        self.setWindowTitle("Guessing")
+        self.setWindowTitle("Guessing Game")
         self.setWindowIcon(QIcon("resources/pyqt_logo.png"))
 
         self.setUpMainWindow()
         self.show()
 
     def setUpMainWindow(self):
+        lbl_instruction = QLabel("<b>Guess the fruit</b>")
+
+        # choice
+        rbtn_apple = QRadioButton("Apple")
+        rbtn_pineapple = QRadioButton("Pineapple")
+        rbtn_watermelon = QRadioButton("Watermelon")
+        rbtn_banana = QRadioButton("Banana")
 
         lbl_info = QLabel("Click the pushbutton to select an icon")
 
@@ -35,6 +42,13 @@ class MainWindow(QMainWindow):
         self.btn_icon.clicked.connect(self.changeIcon)
 
         lyt_main = QVBoxLayout()
+        lyt_main.addWidget(lbl_instruction)
+
+        lyt_main.addWidget(rbtn_apple)
+        lyt_main.addWidget(rbtn_pineapple)
+        lyt_main.addWidget(rbtn_watermelon)
+        lyt_main.addWidget(rbtn_banana)
+
         lyt_main.addWidget(lbl_info)
         lyt_main.addWidget(self.btn_icon)
 
